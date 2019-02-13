@@ -13,12 +13,15 @@ class ClickAndSendKeys():
         baseURL = "https://learn.letskodeit.com/p/practice"
         driver = webdriver.Firefox()
         driver.get(baseURL)
-        #driver.implicitly_wait(2)
+        driver.implicitly_wait(5)
 
         sign_in_button_path = "//a[@class='navbar-link fedora-navbar-link']"
         wait = WebDriverWait(driver, 10)
         elementSignIn = wait.until(EC.visibility_of_element_located((By.XPATH, sign_in_button_path)))
+#        elementSignIn = driver.find_element(By.XPATH, sign_in_button_path)
         elementSignIn.click()
+
+#        print("Is elementSignIn enabled? ->", elementSignIn.is_enabled())
 
 
         elementUsername = driver.find_element(By.ID , "user_email")
