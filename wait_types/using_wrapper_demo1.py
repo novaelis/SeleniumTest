@@ -1,6 +1,6 @@
 from selenium import webdriver
-from selenium.webdriver.common.by import By
 from utilities.handy_wrappers import HandyWrappers
+import time
 
 class UsingWrappers():
 
@@ -12,9 +12,13 @@ class UsingWrappers():
         driver.get(baseUrl)
         hw = HandyWrappers(driver)
 
-        element = hw.getElement("name")
+        element = hw.getElement("name", "Id")
         print(element.get_attribute('type'))
-
+        element2 = hw.getElement("name")
+        element2.send_keys("Test")
+        time.sleep(2)
+        element3 = hw.getElement("//input[@id='name']", "xpath")
+        print(element3.get_attribute('type'))
 
 uw = UsingWrappers()
 uw.test()
