@@ -1,7 +1,10 @@
 from selenium import webdriver
 from utilities.handy_wrappers import HandyWrappers
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.keys import Keys
+
+import time
 
 
 class DynamicXPathFormat():
@@ -33,9 +36,34 @@ class DynamicXPathFormat():
         elementSeachLogedIn = hw.isElementPresent("search-courses", By.ID)
         if elementSeachLogedIn:
             elementSeachLogedIn.send_keys("Java")
-        elementDoSeachLogedIn = hw.isElementPresent("search-courses-button", By.ID)
+        elementDoSeachLogedIn = hw.isElementPresent("search-course-button", By.ID)
         if elementDoSeachLogedIn:
             elementDoSeachLogedIn.click()
+
+        time.sleep(2)
+
+        # Goes through list of courses and click on every choice
+
+        # elementSeleniumWithJava = hw.isElementPresent("//div[contains(text(),'Selenium WebDriver With Java')]",
+        #                                               By.XPATH)
+        # if elementSeleniumWithJava:
+        #     elementSeleniumWithJava.click()
+        # driver.back()
+        print('Krece sa listom')
+        listOfCourse = ['Selenium WebDriver With Java', 'JavaScript', 'Step', 'WebDriver Bundle']
+        for elementTitle in listOfCourse:
+            print("//div[contains(text(),'{0}')]".format(elementTitle))
+            element = hw.isElementPresent("//div[contains(text(),'{0}')]".format(elementTitle), By.XPATH)
+            # If existed then clikc on element
+            if element:
+                element.click()
+            else:
+                print(element)
+            # Wait before browser goes back
+            time.sleep(2)
+            driver.back()
+
+        time.sleep(1000)
 
 
 dxf = DynamicXPathFormat()

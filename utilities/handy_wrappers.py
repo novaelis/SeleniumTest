@@ -41,7 +41,7 @@ class HandyWrappers():
             else:
                 return False
         except:
-            print("Element not found", element)
+            print("Element not found")
             return False
 
     def elementPresenceCheck(self, locator, locatorType):
