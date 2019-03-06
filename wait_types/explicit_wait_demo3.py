@@ -8,7 +8,7 @@ class ExplicitWaitDemo3():
 
     def test(self):
         baseUrl = 'https://global.cheapflights.com/'
-        driver = webdriver.Firefox()
+        driver = webdriver.Chrome()
         driver.implicitly_wait(3)
         driver.maximize_window()
         driver.get(baseUrl)
@@ -82,6 +82,9 @@ class ExplicitWaitDemo3():
         # elementFindDeals.click()
         ewt.waitForElement("//div[@class='fieldBlock buttonBlock']//button[@type='submit']", 'xpath').click()
         time.sleep(5)
+        # elementAlert = driver.switch_to.alert
+        # elementAlert.dismiss()
+        ewt.waitForElement("nhy2-dialog-close").click()
         # driver.close()
         # Exit popup screen
         # driver.find_element(By.XPATH, "//label[contains(text(),'Same')])]").click()
@@ -91,7 +94,7 @@ class ExplicitWaitDemo3():
         # elementSameDeparting.click()
         # elementSameDeparting = ewt.waitForElement("//label[contains(text(),'Same')]",'xpath')
         # elementSameDeparting.click()
-        ewt.waitForElement("//label[contains(text(),'Same')]", 'xpath', 20).click()
+        ewt.waitForElement("//label[contains(text(),'Same')]", 'xpath', 10).click()
 
 
 ewd = ExplicitWaitDemo3()
